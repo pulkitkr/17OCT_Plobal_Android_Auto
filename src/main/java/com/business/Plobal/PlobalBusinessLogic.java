@@ -531,7 +531,7 @@ public class PlobalBusinessLogic extends Utilities {
 		verifyElementPresentAndClick(PlobalLoginPage.objLogOutOkBtn, "OK Button");
 	}
 
-	public void cleverTap(String cleverTapEmail, String cleverTapPassword, String email) throws Exception {
+	public void CleverTap(String cleverTapEmail, String cleverTapPassword, String email) throws Exception {
 		extent.HeaderChildNode("Clevertap");
 
 		setPlatform("Web");
@@ -563,20 +563,20 @@ public class PlobalBusinessLogic extends Utilities {
 		String UserCleverTapID = getText(CleverTapPage.objUserId);
 		verifyElementPresentAndClick(CleverTapPage.objActivityTab, getText(CleverTapPage.objActivityTab));
 
-		waitTime(5000);
-		loginEventsCleverTap();
-		waitTime(5000);
-		productViewedCleverTap();
-		waitTime(5000);
-		addToCartCleverTap();
-		waitTime(5000);
-		orderPlacedPaymentPending();
-		waitTime(5000);
-		orderSelectAddressCleverTap();
-		waitTime(5000);
-		orderChargedCleverTap();
-		waitTime(5000);
-		logoutCleverTap();
+//		waitTime(5000);
+//		loginEventsCleverTap();
+//		waitTime(5000);
+//		productViewedCleverTap();
+//		waitTime(5000);
+//		addToCartCleverTap();
+//		waitTime(5000);
+//		orderPlacedPaymentPending();
+//		waitTime(5000);
+//		orderSelectAddressCleverTap();
+//		waitTime(5000);
+//		orderChargedCleverTap();
+//		waitTime(5000);
+//		logoutCleverTap();
 		softAssertion.assertAll();
 	}
 
@@ -592,12 +592,22 @@ public class PlobalBusinessLogic extends Utilities {
 		logger.info("Event name 'Login' & their properties(Login)--> where actualResult is " + actualResult.get("event")
 				+ " & expectedResult is " + expectedResult.get("event") + " is : " + lowerToUpperBooleanValue(event)
 				+ " and is " + stringName(event));
+		
+		extent.extentLoggerPass("Login", "Event name 'Login' & their properties(Login)--> where actualResult is " + actualResult.get("event")
+		+ " & expectedResult is " + expectedResult.get("event") + " is : " + lowerToUpperBooleanValue(event)
+		+ " and is " + stringName(event));
+		
 		softAssertion.assertEquals(actualResult.get("event"), expectedResult.get("event"));
 
 		boolean emailVerify = expectedResult.get("Email").equals(actualResult.get("Email"));
 		logger.info("Event name 'Login' & their properties(Email)--> where actualResult is " + actualResult.get("Email")
 				+ " & expectedResult is " + expectedResult.get("Email") + " is : "
 				+ lowerToUpperBooleanValue(emailVerify) + " and is " + stringName(emailVerify));
+		
+		extent.extentLoggerPass("Email EVENT", "Event name 'Login' & their properties(Email)--> where actualResult is " + actualResult.get("Email")
+		+ " & expectedResult is " + expectedResult.get("Email") + " is : "
+		+ lowerToUpperBooleanValue(emailVerify) + " and is " + stringName(emailVerify) );
+		
 		softAssertion.assertEquals(actualResult.get("Email"), expectedResult.get("Email"));
 		System.out.println("=============================================================================");
 
@@ -617,16 +627,28 @@ public class PlobalBusinessLogic extends Utilities {
 		logger.info("Event name 'Product Viewed' & their properties(Product Viewed)--> where actualResult is "
 				+ actualResult.get("Product Viewed") + " & expectedResult is " + expectedResult.get("Product Viewed")
 				+ " is : " + lowerToUpperBooleanValue(event) + " and is " + stringName(event));
+		
+		extent.extentLoggerPass("Product Viewed", "Event name 'Product Viewed' & their properties(Product Viewed)--> where actualResult is "
+				+ actualResult.get("Product Viewed") + " & expectedResult is " + expectedResult.get("Product Viewed")
+				+ " is : " + lowerToUpperBooleanValue(event) + " and is " + stringName(event) );
 		softAssertion.assertEquals(actualResult.get("Product Viewed"), expectedResult.get("Product Viewed"));
 
 		boolean product = expectedResult.get("Product").equals(actualResult.get("Product"));
 		logger.info("Event name 'Product Viewed' & their proprties(Product)--> where actualResult is "
 				+ actualResult.get("Product") + " & expectedResult is " + expectedResult.get("Product") + " is : "
 				+ lowerToUpperBooleanValue(product) + " and is " + stringName(product));
+		
+		extent.extentLoggerPass("Product Viewed", "Event name 'Product Viewed' & their proprties(Product)--> where actualResult is "
+				+ actualResult.get("Product") + " & expectedResult is " + expectedResult.get("Product") + " is : "
+				+ lowerToUpperBooleanValue(product) + " and is " + stringName(product) );
 		softAssertion.assertEquals(actualResult.get("Product"), expectedResult.get("Product"));
 
 		boolean productPrice = expectedResult.get("price").equals(actualResult.get("price"));
 		logger.info("Event name 'Product Viewed' & their properties(Price)--> where actualResult is "
+				+ actualResult.get("price") + " & expectedResult is " + expectedResult.get("price") + " is : "
+				+ lowerToUpperBooleanValue(productPrice) + " and is " + stringName(productPrice));
+		
+		extent.extentLoggerPass("Product Price", "Event name 'Product Viewed' & their properties(Price)--> where actualResult is "
 				+ actualResult.get("price") + " & expectedResult is " + expectedResult.get("price") + " is : "
 				+ lowerToUpperBooleanValue(productPrice) + " and is " + stringName(productPrice));
 		softAssertion.assertEquals(actualResult.get("price"), expectedResult.get("price"));
@@ -650,10 +672,18 @@ public class PlobalBusinessLogic extends Utilities {
 		logger.info("Event name 'ADD TO CART' & their properties(add to cart)--> where actualResult is "
 				+ actualResult.get("addtocart") + " & expectedResult is " + expectedResult.get("addtocart") + " is : "
 				+ lowerToUpperBooleanValue(event) + " and is " + stringName(event));
+		
+		extent.extentLoggerPass("Add To Cart", "Event name 'ADD TO CART' & their properties(add to cart)--> where actualResult is "
+				+ actualResult.get("addtocart") + " & expectedResult is " + expectedResult.get("addtocart") + " is : "
+				+ lowerToUpperBooleanValue(event) + " and is " + stringName(event));
 		softAssertion.assertEquals(actualResult.get("addtocart"), expectedResult.get("addtocart"));
 
 		boolean product = expectedResult.get("product title").equals(actualResult.get("product title"));
 		logger.info("Event name 'ADD To Cart' & their properties(product title)--> where actualResult is "
+				+ actualResult.get("product title") + " & expectedResult is " + expectedResult.get("product title")
+				+ " is : " + lowerToUpperBooleanValue(product) + " and is " + stringName(product));
+		
+		extent.extentLoggerPass("Add to cart Product Title", "Event name 'ADD To Cart' & their properties(product title)--> where actualResult is "
 				+ actualResult.get("product title") + " & expectedResult is " + expectedResult.get("product title")
 				+ " is : " + lowerToUpperBooleanValue(product) + " and is " + stringName(product));
 		softAssertion.assertEquals(actualResult.get("product title"), expectedResult.get("product title"));
@@ -662,10 +692,18 @@ public class PlobalBusinessLogic extends Utilities {
 		logger.info("Event name 'ADD To Cart' & their properties(Variant Name)--> where actualResult is "
 				+ actualResult.get("Variant Name") + " & expectedResult is " + expectedResult.get("Variant Name")
 				+ " is : " + lowerToUpperBooleanValue(variantName) + " and is " + stringName(variantName));
+		
+		extent.extentLoggerPass("Add to Cart Variant Name", "Event name 'ADD To Cart' & their properties(Variant Name)--> where actualResult is "
+				+ actualResult.get("Variant Name") + " & expectedResult is " + expectedResult.get("Variant Name")
+				+ " is : " + lowerToUpperBooleanValue(variantName) + " and is " + stringName(variantName));
 		softAssertion.assertEquals(actualResult.get("Variant Name"), expectedResult.get("Variant Name"));
 
 		boolean productPrice = expectedResult.get("price").equals(actualResult.get("price"));
 		logger.info("Event name 'ADD To Cart' & their properties(price) where actualResult is "
+				+ actualResult.get("price") + " & expectedResult is " + expectedResult.get("price") + " is : "
+				+ lowerToUpperBooleanValue(productPrice) + " and is " + stringName(productPrice));
+		
+		extent.extentLoggerPass("Add to Cart Price", "Event name 'ADD To Cart' & their properties(price) where actualResult is "
 				+ actualResult.get("price") + " & expectedResult is " + expectedResult.get("price") + " is : "
 				+ lowerToUpperBooleanValue(productPrice) + " and is " + stringName(productPrice));
 		softAssertion.assertEquals(actualResult.get("price"), expectedResult.get("price"));
@@ -688,16 +726,28 @@ public class PlobalBusinessLogic extends Utilities {
 		logger.info("Event name 'PAYMENT PENDING' & their properties(payment Pending)--> where actualResult is "
 				+ actualResult.get("payment Pending") + " & expectedResult is " + expectedResult.get("payment Pending")
 				+ " is : " + lowerToUpperBooleanValue(event) + " and is " + stringName(event));
+		
+		extent.extentLoggerPass("Payment Pending", "Event name 'PAYMENT PENDING' & their properties(payment Pending)--> where actualResult is "
+				+ actualResult.get("payment Pending") + " & expectedResult is " + expectedResult.get("payment Pending")
+				+ " is : " + lowerToUpperBooleanValue(event) + " and is " + stringName(event));
 		softAssertion.assertEquals(actualResult.get("payment Pending"), expectedResult.get("payment Pending"));
 
 		boolean totalQuanity = expectedResult.get("total item").equals(actualResult.get("total item"));
 		logger.info("Event name 'PAYMENT PENDING' & their properties(total item)--> where actualResult is "
 				+ actualResult.get("total item") + " & expectedResult is " + expectedResult.get("total item") + " is : "
 				+ lowerToUpperBooleanValue(totalQuanity) + " and is " + stringName(totalQuanity));
+		
+		extent.extentLoggerPass("Payment Pending Total Item", "Event name 'PAYMENT PENDING' & their properties(total item)--> where actualResult is "
+				+ actualResult.get("total item") + " & expectedResult is " + expectedResult.get("total item") + " is : "
+				+ lowerToUpperBooleanValue(totalQuanity) + " and is " + stringName(totalQuanity));
 		softAssertion.assertEquals(actualResult.get("total item"), expectedResult.get("total item"));
 
 		boolean cartAMT = expectedResult.get("cart amount").equals(actualResult.get("cart amount"));
 		logger.info("Event name 'PAYMENT PENDING' & their properties(cart amount)--> where actualResult is "
+				+ actualResult.get("cart amount") + " & expectedResult is " + expectedResult.get("cart amount")
+				+ " is : " + lowerToUpperBooleanValue(cartAMT) + " and is " + stringName(cartAMT));
+		
+		extent.extentLoggerPass("Payment Pending Cart Amount", "Event name 'PAYMENT PENDING' & their properties(cart amount)--> where actualResult is "
 				+ actualResult.get("cart amount") + " & expectedResult is " + expectedResult.get("cart amount")
 				+ " is : " + lowerToUpperBooleanValue(cartAMT) + " and is " + stringName(cartAMT));
 		softAssertion.assertEquals(actualResult.get("cart amount"), expectedResult.get("cart amount"));
@@ -725,10 +775,18 @@ public class PlobalBusinessLogic extends Utilities {
 		logger.info("Event name 'Select Address' & their properties(Select Address)--> where actualResult is "
 				+ actualResult.get("Select Address") + " & expectedResult is " + expectedResult.get("Select Address")
 				+ " is : " + lowerToUpperBooleanValue(event) + " and is " + stringName(event));
+		
+		extent.extentLoggerPass("Select Address", "Event name 'Select Address' & their properties(Select Address)--> where actualResult is "
+				+ actualResult.get("Select Address") + " & expectedResult is " + expectedResult.get("Select Address")
+				+ " is : " + lowerToUpperBooleanValue(event) + " and is " + stringName(event));
 		softAssertion.assertEquals(actualResult.get("Select Address"), expectedResult.get("Select Address"));
 
 		boolean name = expectedResult.get("Name").equals(actualResult.get("Name"));
 		logger.info("Event name 'Select Address' & their properties(Name)--> where actualResult is "
+				+ actualResult.get("Select Address") + " & expectedResult is " + expectedResult.get("Select Address")
+				+ " is : " + lowerToUpperBooleanValue(name) + " and is " + stringName(name));
+		
+		extent.extentLoggerPass("Select Address Name", "Event name 'Select Address' & their properties(Name)--> where actualResult is "
 				+ actualResult.get("Select Address") + " & expectedResult is " + expectedResult.get("Select Address")
 				+ " is : " + lowerToUpperBooleanValue(name) + " and is " + stringName(name));
 		softAssertion.assertEquals(actualResult.get("Name"), expectedResult.get("Name"));
@@ -737,10 +795,18 @@ public class PlobalBusinessLogic extends Utilities {
 		logger.info("Event name 'Select Address' & their properties(Address)--> where actualResult is "
 				+ actualResult.get("Address") + " & expectedResult is " + expectedResult.get("Address") + " is : "
 				+ lowerToUpperBooleanValue(address) + " and is " + stringName(address));
+		
+		extent.extentLoggerPass("Addresss", "Event name 'Select Address' & their properties(Address)--> where actualResult is "
+				+ actualResult.get("Address") + " & expectedResult is " + expectedResult.get("Address") + " is : "
+				+ lowerToUpperBooleanValue(address) + " and is " + stringName(address));
 		softAssertion.assertEquals(actualResult.get("Address"), expectedResult.get("Address"));
 
 		boolean city = expectedResult.get("City").equals(actualResult.get("City"));
 		logger.info("Event name 'Select Address' & their properties(City)--> where actualResult is "
+				+ actualResult.get("City") + " & expectedResult is " + expectedResult.get("City") + " is : "
+				+ lowerToUpperBooleanValue(city) + " and is " + stringName(city));
+		
+		extent.extentLoggerPass("Select Address City", "Event name 'Select Address' & their properties(City)--> where actualResult is "
 				+ actualResult.get("City") + " & expectedResult is " + expectedResult.get("City") + " is : "
 				+ lowerToUpperBooleanValue(city) + " and is " + stringName(city));
 		softAssertion.assertEquals(actualResult.get("City"), expectedResult.get("City"));
@@ -749,10 +815,18 @@ public class PlobalBusinessLogic extends Utilities {
 		logger.info("Event name 'Select Address' & their properties(Province)--> where actualResult is "
 				+ actualResult.get("Province") + " & expectedResult is " + expectedResult.get("Province") + " is : "
 				+ lowerToUpperBooleanValue(state) + " and is " + stringName(state));
+		
+		extent.extentLoggerPass("Select Address Province", "Event name 'Select Address' & their properties(Province)--> where actualResult is "
+				+ actualResult.get("Province") + " & expectedResult is " + expectedResult.get("Province") + " is : "
+				+ lowerToUpperBooleanValue(state) + " and is " + stringName(state));
 		softAssertion.assertEquals(actualResult.get("Province"), expectedResult.get("Province"));
 
 		boolean country = expectedResult.get("Country").equals(actualResult.get("Country"));
 		logger.info("Event name 'Select Address' & their properties(Country)--> where actualResult is "
+				+ actualResult.get("Country") + " & expectedResult is " + expectedResult.get("Country") + " is : "
+				+ lowerToUpperBooleanValue(country) + " and is " + stringName(country));
+		
+		extent.extentLoggerPass("Select Address Country", "Event name 'Select Address' & their properties(Country)--> where actualResult is "
 				+ actualResult.get("Country") + " & expectedResult is " + expectedResult.get("Country") + " is : "
 				+ lowerToUpperBooleanValue(country) + " and is " + stringName(country));
 		softAssertion.assertEquals(actualResult.get("Country"), expectedResult.get("Country"));
@@ -761,10 +835,18 @@ public class PlobalBusinessLogic extends Utilities {
 		logger.info("Event name 'Select Address' & their properties(Zipcode)--> where actualResult is "
 				+ actualResult.get("Zipcode") + " & expectedResult is " + expectedResult.get("Zipcode") + " is : "
 				+ lowerToUpperBooleanValue(pin) + " and is " + stringName(pin));
+		
+		extent.extentLoggerPass("Select Address Zipcode", "Event name 'Select Address' & their properties(Zipcode)--> where actualResult is "
+				+ actualResult.get("Zipcode") + " & expectedResult is " + expectedResult.get("Zipcode") + " is : "
+				+ lowerToUpperBooleanValue(pin) + " and is " + stringName(pin));
 		softAssertion.assertEquals(actualResult.get("Zipcode"), expectedResult.get("Zipcode"));
 
 		boolean mobileNo = expectedResult.get("MobileNo").equals(actualResult.get("MobileNo"));
 		logger.info("Event name 'Select Address' & their properties(MobileNo)--> where actualResult is "
+				+ actualResult.get("MobileNo") + " & expectedResult is " + expectedResult.get("MobileNo") + " is : "
+				+ lowerToUpperBooleanValue(mobileNo) + " and is " + stringName(mobileNo));
+		
+		extent.extentLoggerPass("Select Address Mobile No", "Event name 'Select Address' & their properties(MobileNo)--> where actualResult is "
 				+ actualResult.get("MobileNo") + " & expectedResult is " + expectedResult.get("MobileNo") + " is : "
 				+ lowerToUpperBooleanValue(mobileNo) + " and is " + stringName(mobileNo));
 		softAssertion.assertEquals(actualResult.get("MobileNo"), expectedResult.get("MobileNo"));
@@ -786,16 +868,28 @@ public class PlobalBusinessLogic extends Utilities {
 		logger.info("Event name 'Charged' & their properties(Charged)--> where actualResult is "
 				+ actualResult.get("Charged") + " & expectedResult is " + expectedResult.get("Charged") + " is : "
 				+ lowerToUpperBooleanValue(event) + " and is " + stringName(event));
+		
+		extent.extentLoggerPass("Order Charged", "Event name 'Charged' & their properties(Charged)--> where actualResult is "
+				+ actualResult.get("Charged") + " & expectedResult is " + expectedResult.get("Charged") + " is : "
+				+ lowerToUpperBooleanValue(event) + " and is " + stringName(event));
 		softAssertion.assertEquals(actualResult.get("Charged"), expectedResult.get("Charged"));
 
 		boolean orderID = expectedResult.get("Order Id").equals(actualResult.get("Order Id"));
 		logger.info("Event name 'Charged' & their properties(Order Id)--> where actualResult is "
 				+ actualResult.get("Order Id") + " & expectedResult is " + expectedResult.get("Order Id") + " is : "
 				+ lowerToUpperBooleanValue(orderID) + " and is " + stringName(orderID));
+		
+		extent.extentLoggerPass("Order Id", "Event name 'Charged' & their properties(Order Id)--> where actualResult is "
+				+ actualResult.get("Order Id") + " & expectedResult is " + expectedResult.get("Order Id") + " is : "
+				+ lowerToUpperBooleanValue(orderID) + " and is " + stringName(orderID));
 		softAssertion.assertEquals(actualResult.get("Order Id"), expectedResult.get("Order Id"));
 
 		boolean paymentMode = expectedResult.get("Payment Mode").equals(actualResult.get("Payment Mode"));
 		logger.info("Event name 'Charged' & their properties(Payment Mode)--> where actualResult is "
+				+ actualResult.get("Payment Mode") + " & expectedResult is " + expectedResult.get("Payment Mode")
+				+ " is : " + lowerToUpperBooleanValue(paymentMode) + " and is " + stringName(paymentMode));
+		
+		extent.extentLoggerPass("Payment Mode", "Event name 'Charged' & their properties(Payment Mode)--> where actualResult is "
 				+ actualResult.get("Payment Mode") + " & expectedResult is " + expectedResult.get("Payment Mode")
 				+ " is : " + lowerToUpperBooleanValue(paymentMode) + " and is " + stringName(paymentMode));
 		softAssertion.assertEquals(actualResult.get("Payment Mode"), expectedResult.get("Payment Mode"));
@@ -815,16 +909,28 @@ public class PlobalBusinessLogic extends Utilities {
 		logger.info("Event name 'logout' & their properties(logout)--> where actualResult is "
 				+ actualResult.get("logout") + " & expectedResult is " + expectedResult.get("logout") + " is : "
 				+ lowerToUpperBooleanValue(event) + " and is " + stringName(event));
+		
+		extent.extentLoggerPass("Logout", "Event name 'logout' & their properties(logout)--> where actualResult is "
+				+ actualResult.get("logout") + " & expectedResult is " + expectedResult.get("logout") + " is : "
+				+ lowerToUpperBooleanValue(event) + " and is " + stringName(event));
 		softAssertion.assertEquals(actualResult.get("logout"), expectedResult.get("logout"));
 
 		boolean userName = expectedResult.get("User Name").equals(actualResult.get("User Name"));
 		logger.info("Event name 'User Name' & their properties(Order Id)--> where actualResult is "
 				+ actualResult.get("User Name") + " & expectedResult is " + expectedResult.get("User Name") + " is : "
 				+ lowerToUpperBooleanValue(userName) + " and is " + stringName(userName));
+		
+		extent.extentLoggerPass("User Name", "Event name 'User Name' & their properties(Order Id)--> where actualResult is "
+				+ actualResult.get("User Name") + " & expectedResult is " + expectedResult.get("User Name") + " is : "
+				+ lowerToUpperBooleanValue(userName) + " and is " + stringName(userName));
 		softAssertion.assertEquals(actualResult.get("User Name"), expectedResult.get("User Name"));
 
 		boolean userEmail = expectedResult.get("Email").equals(actualResult.get("Email"));
 		logger.info("Event name 'Email' & their properties(Order Id)--> where actualResult is "
+				+ actualResult.get("Email") + " & expectedResult is " + expectedResult.get("Email") + " is : "
+				+ lowerToUpperBooleanValue(userEmail) + " and is " + stringName(userEmail));
+		
+		extent.extentLoggerPass("Email", "Event name 'Email' & their properties(Order Id)--> where actualResult is "
 				+ actualResult.get("Email") + " & expectedResult is " + expectedResult.get("Email") + " is : "
 				+ lowerToUpperBooleanValue(userEmail) + " and is " + stringName(userEmail));
 		softAssertion.assertEquals(actualResult.get("Email"), expectedResult.get("Email"));

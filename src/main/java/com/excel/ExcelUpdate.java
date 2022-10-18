@@ -56,6 +56,109 @@ public class ExcelUpdate {
 		}
 	}
 	
+	
+	public static void creatExcel1() { 
+		try {
+			String currentDate = getDate();
+			xlpath = System.getProperty("user.dir") + "\\CleverTapEvents\\CleverTapEvents_"+currentDate+".xlsx";
+			xlFileName = "CleverTapEvents_"+currentDate+".xlsx";
+			File dir = new File(System.getProperty("user.dir")+"\\CleverTapEvents");
+			if(!dir.isDirectory()) {
+				dir.mkdir();
+			}
+			File file = new File(xlpath);
+			if (!file.exists()) {
+				XSSFWorkbook workbook = new XSSFWorkbook();
+				workbook.createSheet(sheet);
+				FileOutputStream fos = new FileOutputStream(
+						new File(xlpath));
+				workbook.write(fos);
+				workbook.close();
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	
+	
+	//public static void writeDataCleverTap(String Validation, String result, String error)
+	public static void writeDataCleverTap(String result, String error) {
+		try {
+			XSSFWorkbook myExcelBook = new XSSFWorkbook(new FileInputStream(xlpath));
+			FileOutputStream output = new FileOutputStream(xlpath);
+			XSSFSheet myExcelSheet = myExcelBook.getSheet(sheet);
+//			myExcelSheet
+			XSSFRow xrow = myExcelSheet.getRow(row);
+			if (xrow == null) {
+				xrow = myExcelSheet.createRow(row);
+			}
+			Cell cell = null;
+			if(counter == 0) {
+				xrow = myExcelSheet.getRow(0);
+				if (xrow == null) {
+					xrow = myExcelSheet.createRow(0);
+				}
+				if (cell == null) {
+					cell = xrow.createCell(0);
+					cell.setCellValue("Module");
+					cell = xrow.createCell(1);
+					cell.setCellValue("Event");
+					cell = xrow.createCell(2);
+					cell.setCellValue("Properties");
+					cell = xrow.createCell(3);
+					cell.setCellValue("Result");
+					counter++;
+				}
+			}
+			// Update the value of cell
+			if (result.equals("Pass")) {
+				if (cell == null) {
+					cell = xrow.createCell(0);
+					cell.setCellValue(ModuleName);
+					cell = xrow.createCell(3);
+					cell.setCellValue(result);
+					cell = xrow.createCell(2);
+					cell.setCellValue(UserType);
+					row++;
+					passCounter++;
+				}
+			} else if (result.equals("false")) {
+				if (cell == null) {
+					cell = xrow.createCell(0);
+					cell.setCellValue(ModuleName);
+					cell = xrow.createCell(4);
+					cell.setCellValue(result);
+					cell = xrow.createCell(5);
+					cell.setCellValue(error);
+					cell = xrow.createCell(2);
+					cell.setCellValue(UserType);
+					row++;
+					failCounter++;
+				}
+			} else if (result.equals("Warning")) {
+				if (cell == null) {
+					cell = xrow.createCell(1);
+					cell.setCellValue(ModuleName);
+					cell = xrow.createCell(4);
+					cell.setCellValue(result);
+					cell = xrow.createCell(5);
+					cell.setCellValue(error);
+					cell = xrow.createCell(2);
+					cell.setCellValue(UserType);
+					row++;
+					warningCounter++;
+				}
+			}
+			myExcelBook.write(output);
+			myExcelBook.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	
 	public static String getDate() {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
@@ -130,8 +233,8 @@ public class ExcelUpdate {
 					cell.setCellValue(result);
 					cell = xrow.createCell(5);
 					cell.setCellValue(error);
-					cell = xrow.createCell(2);
-					cell.setCellValue(UserType);
+//					cell = xrow.createCell(2);
+//					cell.setCellValue(UserType);
 					row++;
 					warningCounter++;
 				}
@@ -153,11 +256,39 @@ public class ExcelUpdate {
 			if (xrow == null) {
 				xrow = myExcelSheet.createRow(row);
 			}
-			Cell cell = null;
+			
+			
+			
+//			Cell cell ;
+////			if(counter == 0) {
+//				xrow = myExcelSheet.getRow(0);
+//			//	if (xrow == null) {
+//					xrow = myExcelSheet.createRow(0);
+//				//}
+//			//	if (cell == null) {
+//					cell = xrow.createCell(0);
+//					cell.setCellValue("Module");
+//					cell = xrow.createCell(1);
+//					cell.setCellValue("Scenario");
+//					cell = xrow.createCell(2);
+//					cell.setCellValue("User Type");
+//					cell = xrow.createCell(3);
+//					cell.setCellValue("Validations");
+//					cell = xrow.createCell(4);
+//					cell.setCellValue("Results");
+//					cell = xrow.createCell(5);
+//					cell.setCellValue("Remarks");
+//					//counter++;
+//				//}
+//			//}
+			
+					//xrow = myExcelSheet.getRow(1);
+			
+			Cell cell1 = null;
 			// Update the value of cell
-			if (cell == null) {
-				cell = xrow.createCell(1);
-				cell.setCellValue(NodeName);
+			if (cell1 == null) {
+				cell1 = xrow.createCell(1);
+				cell1.setCellValue(NodeName);
 			}
 			myExcelBook.write(output);
 			myExcelBook.close();
@@ -274,77 +405,5 @@ public class ExcelUpdate {
 		}
 	}
 	
-	public static void writeDataCleverTap(String result, String error) {
-		try {
-			XSSFWorkbook myExcelBook = new XSSFWorkbook(new FileInputStream(xlpath));
-			FileOutputStream output = new FileOutputStream(xlpath);
-			XSSFSheet myExcelSheet = myExcelBook.getSheet(sheet);
-//			myExcelSheet
-			XSSFRow xrow = myExcelSheet.getRow(row);
-			if (xrow == null) {
-				xrow = myExcelSheet.createRow(row);
-			}
-			Cell cell = null;
-			if(counter == 0) {
-				xrow = myExcelSheet.getRow(0);
-				if (xrow == null) {
-					xrow = myExcelSheet.createRow(0);
-				}
-				if (cell == null) {
-					cell = xrow.createCell(0);
-					cell.setCellValue("Module");
-					cell = xrow.createCell(1);
-					cell.setCellValue("Event");
-					cell = xrow.createCell(2);
-					cell.setCellValue("Properties");
-					cell = xrow.createCell(3);
-					cell.setCellValue("Result");
-					counter++;
-				}
-			}
-			// Update the value of cell
-			if (result.equals("true")) {
-				if (cell == null) {
-					cell = xrow.createCell(0);
-					cell.setCellValue(ModuleName);
-					cell = xrow.createCell(3);
-					cell.setCellValue(result);
-					cell = xrow.createCell(2);
-					cell.setCellValue(UserType);
-					row++;
-					passCounter++;
-				}
-			} else if (result.equals("false")) {
-				if (cell == null) {
-					cell = xrow.createCell(0);
-					cell.setCellValue(ModuleName);
-					cell = xrow.createCell(4);
-					cell.setCellValue(result);
-					cell = xrow.createCell(5);
-					cell.setCellValue(error);
-					cell = xrow.createCell(2);
-					cell.setCellValue(UserType);
-					row++;
-					failCounter++;
-				}
-			} else if (result.equals("Warning")) {
-				if (cell == null) {
-					cell = xrow.createCell(1);
-					cell.setCellValue(ModuleName);
-					cell = xrow.createCell(4);
-					cell.setCellValue(result);
-					cell = xrow.createCell(5);
-					cell.setCellValue(error);
-					cell = xrow.createCell(2);
-					cell.setCellValue(UserType);
-					row++;
-					warningCounter++;
-				}
-			}
-			myExcelBook.write(output);
-			myExcelBook.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+	
 }

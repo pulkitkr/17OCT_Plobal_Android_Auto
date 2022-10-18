@@ -76,9 +76,53 @@ public class PlobalTestScripts {
 	@Parameters({ "cleverTapEmail","cleverTapPassword" , "email"})
 	@Test(priority = 8)
 	public void plobalCleverTap(String cleverTapEmail, String cleverTapPassword, String email) throws Exception {
-		plobalBusiness.cleverTap(cleverTapEmail,cleverTapPassword, email);
+		plobalBusiness.CleverTap(cleverTapEmail,cleverTapPassword, email);
 		//ExtentReporter.jiraID = "PP-56";
 	}
+	
+	@Test(priority = 9)
+	public void plobalCleverTapLoginevents() throws Exception
+	{
+		plobalBusiness.loginEventsCleverTap();
+	}
+	
+	@Test(priority = 10)
+	public void plobalCleverTapProductViewed() throws Exception
+	{
+		plobalBusiness.productViewedCleverTap();
+	}
+	
+	@Test(priority = 11)
+	public void plobalCleverTapAddToCart() throws Exception
+	{
+		plobalBusiness.addToCartCleverTap();
+	}
+	
+	@Test(priority = 12)
+	public void plobalCleverTapPaymentPending() throws Exception
+	{
+		plobalBusiness.orderPlacedPaymentPending();
+	}
+	
+	@Test(priority = 13)
+	public void plobalCleverTapSelectAddress() throws Exception
+	{
+		plobalBusiness.orderSelectAddressCleverTap();
+	}
+	
+	@Test(priority = 14)
+	public void plobalCleverTapOrderCharged() throws Exception
+	{
+		plobalBusiness.orderChargedCleverTap();
+	}
+	
+	@Test(priority = 15)
+	public void plobalCleverTapLogout() throws Exception
+	{
+		plobalBusiness.logoutCleverTap();
+	}
+	
+	
 
 	@AfterTest
 	public void plobalAppQuit() throws Exception {

@@ -24,9 +24,15 @@
     <classes>
       <class name="com.Plobal.TestScripts.PlobalTestScripts">
         <methods>
-          <include name="plobalCleverTap" invocation-numbers="0"/>
+          <include name="plobalCleverTapSelectAddress"/>
           <include name="plobalAppQuit"/>
+          <include name="plobalCleverTapLogout"/>
+          <include name="plobalCleverTapAddToCart"/>
           <include name="Before"/>
+          <include name="plobalCleverTapOrderCharged"/>
+          <include name="plobalCleverTapPaymentPending"/>
+          <include name="plobalCleverTapProductViewed"/>
+          <include name="plobalCleverTapLoginevents"/>
         </methods>
       </class> <!-- com.Plobal.TestScripts.PlobalTestScripts -->
     </classes>

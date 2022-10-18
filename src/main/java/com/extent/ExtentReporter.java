@@ -166,12 +166,17 @@ public class ExtentReporter implements ITestListener {
 				|| result.getName().equals("PWAWEBLogin") || result.getName().equals("tvLogin")) {
 			ReportName = result.getName();
 			DriverInstance.methodName = result.getName();
-			ExcelUpdate.ModuleName = result.getName();
+			String moduleName=ExcelUpdate.ModuleName = result.getName();
 			logger.info(":::::::::Test " + result.getName() + " Started::::::::");
 			test.set(extent.get().createTest(result.getName(),DriverInstance.getENvironment()));
 			totalTests++;
 			ExcelUpdate.passCounter = ExcelUpdate.failCounter = ExcelUpdate.warningCounter = moduleFailCount = 0;
 			ExcelUpdate.creatExcel();
+			if(moduleName.contains("Clever"))
+			{
+				ExcelUpdate.creatExcel1();
+			}
+			
 			} else {
 				runmode = false;
 				throw new SkipException("");
@@ -266,6 +271,7 @@ public class ExtentReporter implements ITestListener {
 	public void extentLoggerPass(String stepName, String details) {
 		childTest.get().log(Status.PASS, details);
 		ExcelUpdate.writeData(details, "Pass", "");
+		ExcelUpdate.writeDataCleverTap(details, "Pass");
 	}
 
 	public void extentLoggerFail(String stepName, String details) {
