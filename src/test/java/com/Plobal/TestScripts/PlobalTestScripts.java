@@ -77,7 +77,7 @@ public class PlobalTestScripts {
 	@Test(priority = 8)
 	public void plobalCleverTap(String cleverTapEmail, String cleverTapPassword, String email) throws Exception {
 		plobalBusiness.CleverTap(cleverTapEmail,cleverTapPassword, email);
-		ExtentReporter.jiraID = "PP-56";
+//		ExtentReporter.jiraID = "PP-56";
 	}
 	
 	@Test(priority = 9)
