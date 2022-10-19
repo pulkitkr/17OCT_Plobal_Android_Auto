@@ -542,12 +542,12 @@ public class PlobalBusinessLogic extends Utilities {
 		new PlobalBusinessLogic("plobal");
 
 		type(CleverTapPage.objEmailField, cleverTapEmail, "Email Field");
-		waitTime(7000);
+		waitTime(10000);
 		JSClick(CleverTapPage.objContinueWithEmailBtn, "Continue Button");
 
-		waitTime(7000);
+		waitTime(10000);
 		type(CleverTapPage.objPasswordField, cleverTapPassword, "Password Field");
-		waitTime(7000);
+		waitTime(10000);
 		JSClick(CleverTapPage.objLoginBtn, getText(CleverTapPage.objLoginBtn));
 		waitTime(7000);
 		JSClick(CleverTapPage.objStageMobileAppPlobal, getText(CleverTapPage.objStageMobileAppPlobal));

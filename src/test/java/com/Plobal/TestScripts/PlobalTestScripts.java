@@ -84,42 +84,49 @@ public class PlobalTestScripts {
 	public void plobalCleverTapLoginevents() throws Exception
 	{
 		plobalBusiness.loginEventsCleverTap();
+//		ExtentReporter.jiraID = "PP-56";
 	}
 	
 	@Test(priority = 10)
 	public void plobalCleverTapProductViewed() throws Exception
 	{
 		plobalBusiness.productViewedCleverTap();
+//		ExtentReporter.jiraID = "PP-56";
 	}
 	
 	@Test(priority = 11)
 	public void plobalCleverTapAddToCart() throws Exception
 	{
 		plobalBusiness.addToCartCleverTap();
+//		ExtentReporter.jiraID = "PP-56";
 	}
 	
 	@Test(priority = 12)
 	public void plobalCleverTapPaymentPending() throws Exception
 	{
 		plobalBusiness.orderPlacedPaymentPending();
+//		ExtentReporter.jiraID = "PP-56";
 	}
 	
 	@Test(priority = 13)
 	public void plobalCleverTapSelectAddress() throws Exception
 	{
 		plobalBusiness.orderSelectAddressCleverTap();
+//		ExtentReporter.jiraID = "PP-56";
 	}
 	
 	@Test(priority = 14)
 	public void plobalCleverTapOrderCharged() throws Exception
 	{
 		plobalBusiness.orderChargedCleverTap();
+//		ExtentReporter.jiraID = "PP-56";
 	}
 	
 	@Test(priority = 15)
 	public void plobalCleverTapLogout() throws Exception
 	{
 		plobalBusiness.logoutCleverTap();
+//		ExtentReporter.jiraID = "PP-56";
 	}
 	
 	
