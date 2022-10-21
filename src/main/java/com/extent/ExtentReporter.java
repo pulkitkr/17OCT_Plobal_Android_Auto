@@ -221,6 +221,7 @@ public class ExtentReporter implements ITestListener {
 	@Override
 	public void onTestFailure(ITestResult result) {
 		if (DriverInstance.startTest) {
+			screencapture();
 			if ((getDriver() != null) || (getWebDriver() != null)) {
 				childTest.get().log(Status.FAIL, result.getName() + " is FAILED");
 				logger.info("::::::::::Test " + result.getName() + " FAILED::::::::::");
