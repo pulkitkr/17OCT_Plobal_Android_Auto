@@ -17,7 +17,7 @@
 	<parameter name="address" value="Confirm_Address"></parameter>
 	<parameter name="deliveryaddress" value="Confirm_Address"></parameter>
 	<parameter name="searchAddress" value="Confirm_Address"></parameter>
-	<parameter name="size" value="S"></parameter>
+	<parameter name="size" value="XL"></parameter>
 	
 	<parameter name="browserType" value="chrome" />
 	<parameter name="url" value="https://plobal-test-shutterstock.myshopify.com/admin"/>
